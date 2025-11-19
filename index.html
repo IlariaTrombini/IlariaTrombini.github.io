@@ -136,6 +136,7 @@
             margin-bottom: 3rem;
         }
 
+        /* stile generale del titolo */
         h2 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
@@ -279,9 +280,17 @@
             margin-bottom: 1.5rem;
         }
 
+        /* contenitore titolo + bottone */
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }       
+
         .download-cv {
             display: inline-block;
-            margin: 1rem 0;
             padding: 0.5rem 1rem;
             background-color: #008B8B;
             color: white;
@@ -289,14 +298,33 @@
             border-radius: 0.5rem;
             font-weight: bold;
             transition: background-color 0.3s;
-            position: absolute;
-            right: 0;
-            top: -1.5rem;
+            white-space: nowrap;
         }
 
         .download-cv:hover {
             background-color: #005fa3;
         }
+
+        .cv-header h2 {
+            flex: 1;                       /* il titolo occupa tutta la riga disponibile */
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0;              /* niente margine sotto, lo gestisce il flex */
+        }
+
+        /* su schermi piccoli: titolo sopra, bottone sotto */
+        @media (max-width: 768px) {
+            .cv-header {
+                flex-direction: column;
+                align-items: flex-start;   /* o center, se preferisci */
+            }
+
+            .download-cv {
+                width: 100%;               /* opzionale: bottone a tutta larghezza */
+                text-align: center;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -588,10 +616,11 @@
 
         <!-- CV PAGE -->
         <div id="cv" class="page">
-            <section style="position: relative;">
-                <h2>Curriculum Vitae</h2> 
-            
-                <a href="CV_Ilaria_Trombini.pdf" download class="download-cv">⬇ Download CV</a>
+            <section>
+            <div class="cv-header">
+                <h2>Curriculum Vitae</h2>
+                <a href="CV_Ilaria_Trombini.pdf" download class="download-cv"> Download CV</a>
+            </div>
             </section>
             
             <section>
